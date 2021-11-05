@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1073691423552",
+    "project_id": "g24-projet",
+    "storage_bucket": "g24-projet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073691423552:android:8bda30cafc7c3a4cb5c0a5",
+        "android_client_info": {
+          "package_name": "com.uottawaG24.g24projet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073691423552-18nhb59orfv8otk36pm54filb0aepm3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARlY3lD1cpP8IVX5mC1bPc-WSOdXlRxJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073691423552-18nhb59orfv8otk36pm54filb0aepm3d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
