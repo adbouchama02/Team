@@ -1,0 +1,19 @@
+com/uottawaG24/g24projet/BuildConfig.java
+ com.uottawaG24.g24projet.BuildConfig
+com/uottawaG24/g24projet/RegisterActivity.java
+ com.uottawaG24.g24projet.RegisterActivity
+com/uottawaG24/g24projet/MainActivity2.java
+ com.uottawaG24.g24projet.MainActivity2
+com/uottawaG24/g24projet/Admin.java
+ com.uottawaG24.g24projet.Admin
+com/uottawaG24/g24projet/Client.java
+ com.uottawaG24.g24projet.Client
+com/uottawaG24/g24projet/Employee.java
+ com.uottawaG24.g24projet.Employee
+com/uottawaG24/g24projet/User.java
+ com.uottawaG24.g24projet.User
+com/uottawaG24/g24projet/MainActivity.java
+ com.uottawaG24.g24projet.MainActivity
+ com.uottawaG24.g24projet.MainActivity$1
+ com.uottawaG24.g24projet.MainActivity$2
+ com.uottawaG24.g24projet.MainActivity$3

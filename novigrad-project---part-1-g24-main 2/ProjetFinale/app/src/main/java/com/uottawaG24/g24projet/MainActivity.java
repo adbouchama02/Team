@@ -27,9 +27,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     EditText inputUsername, inputPassWord;
     DatabaseReference reference;
+    List<User> loginCredentialsListAdmin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         inputPassWord = findViewById(R.id.inputPassword);
         inputUsername = findViewById(R.id.inputUsername);
 
-        //REFERENCE TO DATABASE!!
-        reference = FirebaseDatabase.getInstance().getReference("credentials");
+        loginCredentialsListAdmin = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference("Utilisateurs");
 
         //Ajoute les 3 roles dans le spinner de l'interface
         Spinner dropdown = findViewById(R.id.userTypeDropdown);
@@ -58,39 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 if (usertype.equals("Administrator")) {
                     Toast.makeText(MainActivity.this, "Vous ne pouvez pas créer de compte Admin", Toast.LENGTH_SHORT).show();
                 } else {
-                    User user = new User(uName, uPassword, usertype);
-                    reference.child("Utilisateurs").child(usertype).child(uName).setValue(user)
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(MainActivity.this, "La registration a été faite avec succes", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                                    startActivity(intent);
-                                }
-                            });
+                    String id = reference.push().getKey();
+                    User loginCredentials = new User(uName,uPassword,usertype);
 
-                    User user1 = new User(uName, uPassword, usertype);
-                    reference.child("Utilisateurs").child(usertype).child(uName).setValue(user)
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(MainActivity.this, "La registration a été faite avec succes", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                                    startActivity(intent);
-                                }
-                            });
+                    reference.child(id).setValue(loginCredentials);
                 }
             }
         });
@@ -98,47 +75,54 @@ public class MainActivity extends AppCompatActivity {
         //BOUTON LOGIN
         Button LButton = (Button) findViewById(R.id.btnLogin);
 
+
         //LButton.setOnClickListener(new View.OnClickListener() {
 
         LButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent registeredIntent = new Intent(getApplicationContext(), MainActivity.class);
                 EditText userNameView = (EditText) findViewById(R.id.inputUsername);
-                String username = userNameView.getText().toString();
+                String username = userNameView.getText().toString().toLowerCase();
                 EditText passwordView = (EditText) findViewById(R.id.inputPassword);
                 String password = passwordView.getText().toString();
                 Spinner roleView = (Spinner) findViewById(R.id.userTypeDropdown);
                 String role = roleView.getSelectedItem().toString();
 
 
+                for (int i = 0; i < loginCredentialsListAdmin.size(); i++){
+                    String databasePassword = loginCredentialsListAdmin.get(i).getPassword();
+                    String databaseUsername = loginCredentialsListAdmin.get(i).getUserName();
+                    String databaseType = loginCredentialsListAdmin.get(i).getType();
 
+                    if ((password.equals(databasePassword) && username.equals(databaseUsername)) && role.equals(databaseType)) {
 
+                        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
 
+                        startActivity(intent);
+                        return;
+                    }
+                }
+                Toast.makeText(MainActivity.this, "The email and the password you entered do not exist ", Toast.LENGTH_LONG).show();
 
-                if (username == "admin" && password == "admin" && role.equals("Administrator")) {
-                    Toast.makeText(MainActivity.this, "La login admin a été fait avec succes", Toast.LENGTH_SHORT).show();
-                }
-                if (username.equals("") && password.equals("")) {
-                    Toast.makeText(MainActivity.this, "SVP entrer des valeur possibles", Toast.LENGTH_SHORT).show();
-                }
-                if (username == "client" && password == "client" && role.equals("Client")) {
-                    Toast.makeText(MainActivity.this, "Le login Client a ete fait avec succes", Toast.LENGTH_SHORT).show();
-                }
-                if (username == "employee" && password == "employee" && role == "Employee") {
-                    Toast.makeText(MainActivity.this, "Le login Employee a ete fait avec succes", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Svp entrer un nouveau username ou password", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                loginCredentialsListAdmin.clear();
 
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    User credentials = postSnapshot.getValue(User.class);
+                    loginCredentialsListAdmin.add(credentials);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-
-        private void switchActivity () {
-            Intent switchIntent = new Intent(this, MainActivity2.class);
-            startActivity(switchIntent);
-
-        }
+            }
+        });
     }
+}

@@ -1,0 +1,10 @@
+#Fri Nov 05 02:39:59 EDT 2021
+base.2=C\:\\Users\\fredj\\OneDrive\\Documents\\GitHub\\Team\\novigrad-project---part-1-g24-main 2\\ProjetFinale\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+path.2=7/classes.dex
+base.1=C\:\\Users\\fredj\\OneDrive\\Documents\\GitHub\\Team\\novigrad-project---part-1-g24-main 2\\ProjetFinale\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+path.1=0/classes.dex
+base.0=C\:\\Users\\fredj\\OneDrive\\Documents\\GitHub\\Team\\novigrad-project---part-1-g24-main 2\\ProjetFinale\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

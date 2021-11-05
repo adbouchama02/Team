@@ -1,27 +1,31 @@
 package com.uottawaG24.g24projet;
 
-public class Admin {
-    public String username;
-    public String password;
-    public String userType;
+public class Admin  {
 
-    public Admin (){
-        //Predetermined username and password
-        username = "admin";
-        password = "123admin456";
-        userType = "Administrator";
+
+
+        public String userName;
+        public String password;
+        public String userType;
+
+        public Admin(String userName, String password) {
+            this.userName = userName;
+            this.password = password;
+            this.userType = "Admin";
+        }
+
+    public Admin() {
     }
 
-    //Access to username
-    public String getUsername(){
-        return username;
-    }
+    public String getUserName() {
+            return userName;
+        }
 
-    //Access to password
-    public String getPassword(){
-        return password;
-    }
+        public String getPassword() {
+            return password;
+        }
 
-    //Access to users type
-    public String getUserType(){ return userType; }
-}
+        public String getUserType() {
+            return userType;
+        }
+    }

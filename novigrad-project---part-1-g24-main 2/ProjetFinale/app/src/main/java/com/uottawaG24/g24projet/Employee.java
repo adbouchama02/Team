@@ -1,10 +1,29 @@
 package com.uottawaG24.g24projet;
 
-public class Employee extends Client{
-    public Employee (String uName, String uPass) {
-        //Sets username and password to desired username and password
-        username = uName;
-        password = uPass;
-        userType = "Employee";
+public class Employee  {
+
+    public String userName;
+    public String password;
+    public String userType;
+
+    public Employee(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        this.userType = "Employee";
+    }
+
+    public Employee() {
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUserType() {
+        return userType;
     }
 }

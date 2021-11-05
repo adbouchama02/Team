@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_200"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/appNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+
+
+            android:text="Novigrad"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/LoginTextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+
+            android:text="Register"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0.6"
+
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextRegistFirstName"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:alpha="1"
+                android:ems="10"
+                android:hint="FirstName"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+
+            <EditText
+                android:id="@+id/editTextRegisterEmail"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:alpha="1"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <EditText
+                android:id="@+id/editTextRegisterPassword"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:alpha="1"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textAlignment="gravity"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+
+            <EditText
+                android:id="@+id/editTextRegisterRepeatPassword"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+
+                android:ems="10"
+                android:hint="Repeat Password"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonRegister"
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Register"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
